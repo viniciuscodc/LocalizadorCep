@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./reset.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.css" rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+      crossorigin="anonymous"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="./style.css" rel="stylesheet" />
+    <title>Buscar CEP</title>
+  </head>
+
+  <body class="d-flex justify-content-center align-items-center">
+    <div class="card mt-5">
+      <div class="card-body pb-4" id="search-input">
+        <div class="form-group">
+          <label for="CEP">Buscar CEP</label>
+          <input type="text" id="CEP" class="form-control" placeholder="Digite o CEP" />
+        </div>
+        <button class="btn btn-primary btn-sm mt-2" onclick="buttonPress()">Buscar</button>
+
+        <div class="invalid-feedback" id="cep-not-found">Cep não encontrado</div>
+        <div class="invalid-feedback" id="wrong-value">Valor digitado incorreto</div>
+        <div class="invalid-feedback" id="server-error">Erro no servidor</div>
+      </div>
+
+      <div class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+
+      <div class="card-body" id="search-output">
+        <div class="row">
+          <div class="col">
+            <span id="cep">CEP:</span>
+          </div>
+          <div class="col">
+            <span id="logradouro">Logradouro:</span>
+          </div>
+          <div class="w-100"></div>
+
+          <div class="col">
+            <span id="complemento">Complemento:</span>
+          </div>
+          <div class="col">
+            <span id="bairro">Bairro:</span>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <span id="localidade">Localidade:</span>
+          </div>
+          <div class="col">
+            <span id="uf">Uf:</span>
+          </div>
+          <div class="w-100"></div>
+
+          <div class="col">
+            <span id="ibge">Ibge:</span>
+          </div>
+          <div class="col">
+            <span id="gia">Gia:</span>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <span id="ddd">Ddd:</span>
+          </div>
+          <div class="col">
+            <span id="siafi">Siafi:</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="main.js"></script>
+</html>
