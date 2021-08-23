@@ -5,27 +5,37 @@ function capitalize(word) {
 $("#search-output").hide();
 $(".spinner-border").hide();
 
-function buttonPress() {
+function search() {
   $("#cep-not-found").hide();
   $("#wrong-value").hide();
   $("#server-error").hide();
+  
   let cep = document.getElementById("CEP").value;
-  if (cep.length == 8 && /^\d+$/.test(cep)) { //validate cep before request
+  //validate cep before request
+  if (cep.length == 8 && /^\d+$/.test(cep)) {
     request(cep);
   } else {
     $("#wrong-value").show();
   }
 }
 
+function newSearch() {
+  $("#search-output").hide();
+  $("#search-input").show(600);
+}
+
 function request(cepValue) {
   $.ajax({
     url: "http://localhost:3000",
     type: "post",
+    crossDomain: true,
     data: { cep: cepValue },
-    beforeSend: function () { //load spinner
+    beforeSend: function () {
+      //load spinner
       $(".spinner-border").show();
     },
-    success: function (res) { //return data and show output menu
+    success: function (res) {
+      //return data and show output menu
       if (res.hasOwnProperty("erro") == false) {
         for (var key in res) {
           if (res.hasOwnProperty(key)) {
@@ -36,7 +46,7 @@ function request(cepValue) {
         }
 
         $("#search-input").hide();
-        $("#search-output").show();
+        $("#search-output").fadeIn("slow");
       } else {
         $("#cep-not-found").show();
       }
@@ -44,9 +54,8 @@ function request(cepValue) {
     complete: function () {
       $(".spinner-border").hide();
     },
-    fail: function (res) { //show server error
+    error: function () {
       $("#server-error").show();
-      console.log(res);
     },
   });
 }
